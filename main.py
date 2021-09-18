@@ -55,10 +55,21 @@ async def on_message(message):
             msg = await client.wait_for("message", check=check)
 
             if msg.content.lower() == "y":
-                await message.channel.send("DO NOT ATTEND THIS EVENT")
-# Level 2, NN
+                await message.channel.send("**DO NOT ATTEND THIS EVENT**")
+# Level 2, YN
             else:
-                await message.channel.send("You said no!")
+                await message.channel.send("Has a doctor, health care provider, or public health unit told you that "
+                                           "you should currently be isolating (staying at home)?")
+
+            msg = await client.wait_for("message", check=check)
+#Level 3, YNY
+            if msg.content.lower() == "y":
+                await message.channel.send("**DO NOT ATTEND THIS EVENT**")
+
+            else: await message.channel.send("Are you currently experiencing any of these symptoms?\n\n")
+
+
+
 # Level 2, N, YASER START HERE
         else:
             await message.channel.send("You said no!")
