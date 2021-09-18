@@ -34,7 +34,7 @@ async def on_message(message):
         response = "Hi, I am Apollo! Type !screen to proceed with the screening."
         await message.channel.send(response)
 
-
+# Level 1:
     elif message.content == '!screen':
         response = "**Let the screening begin... \nDo any of the following apply to you? **\n\n*a. I am fully vaccinated " \
                    "against " \
@@ -47,8 +47,19 @@ async def on_message(message):
             return msg.author == message.author and msg.channel == message.channel and msg.content.lower() in ["y", "n"]
 
         msg = await client.wait_for("message", check=check)
+# Level 2, YY
         if msg.content.lower() == "y":
-            await message.channel.send("You said yes!")
+            await message.channel.send("In the last 14 days, have you travelled outside of Canada and been told to "
+                                       "quarantine (per the federal quarantine requirements)?")
+
+            msg = await client.wait_for("message", check=check)
+
+            if msg.content.lower() == "y":
+                await message.channel.send("DO NOT ATTEND THIS EVENT")
+# Level 2, NN
+            else:
+                await message.channel.send("You said no!")
+# Level 2, N
         else:
             await message.channel.send("You said no!")
 
