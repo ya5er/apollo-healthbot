@@ -59,7 +59,7 @@ async def on_message(message):
 # Level 2, NN
             else:
                 await message.channel.send("You said no!")
-# Level 2, N
+# Level 2, N, YASER START HERE
         else:
             await message.channel.send("You said no!")
 
