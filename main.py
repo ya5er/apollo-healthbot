@@ -36,7 +36,7 @@ async def on_message(message):
 
 
     elif message.content == '!screen':
-        response = "**Let the screening begin... \nDo any of the following apply to you?**\n\n*a. I am fully vaccinated " \
+        response = "**Let the screening begin... \nDo any of the following apply to you? **\n\n*a. I am fully vaccinated " \
                    "against " \
                    "COVID-19 (it has been 14 days or more since your final dose of either a two-dose or a one-dose " \
                    "vaccine series)*\n\n *b. I have tested positive for COVID-19 in the last 90 days (and since been " \
