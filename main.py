@@ -34,7 +34,7 @@ async def on_message(message):
         response = "Hi, I am Apollo! Type !screen to proceed with the screening."
         await message.channel.send(response)
     elif message.content == '!screen':
-        response = "Let the screening begin... \nDo any of the following apply to you?\nI am fully vaccinated against COVID-19 (it has been 14 days or more since your final dose of either a two-dose or a one-dose vaccine series)\nTo reply yes, type y, and to reply no, type n "
+        response = "Let the screening begin... \nDo any of the following apply to you?\nI am fully vaccinated against COVID-19 (it has been 14 days or more since your final dose of either a two-dose or a one-dose vaccine series)\n To reply yes, type y, and to reply no, type n "
         await message.channel.send(response)
         
         def check(msg):
