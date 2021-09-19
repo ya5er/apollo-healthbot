@@ -38,17 +38,19 @@ async def on_message(message):
             # Level 2, YN
             else:
                 await message.channel.send("**Has a doctor, health care provider, or public health unit told you that "
-                                           "you should currently be isolating (staying at home)?**")
+                                           "you should currently be isolating (staying at home)?**\nThis can be "
+                                           "because of an outbreak or contact tracing.")
 
                 msg = await client.wait_for("message", check=check)
                 # Level 3, YNY
                 if msg.content.lower() == "y":
-                    await message.channel.send("**DO NOT ATTEND THIS EVENT**")
+                    await message.channel.send( "**DO NOT ATTEND THIS EVENT**")
 
                 else:
                     await message.channel.send(
-                        "**Are you currently experiencing any of these symptoms?**\n\n**Fever and/or "
-                        "chills**\nTemperature of 37.8 degrees Celsius/100 degrees Fahrenheit or "
+                        "**Are you currently experiencing any of these symptoms?**\nChoose any/all that are new, "
+                        "worsening, and not related to other known causes or conditions you already have.\n\n**Fever "
+                        "and/or chills**\nTemperature of 37.8 degrees Celsius/100 degrees Fahrenheit or "
                         "higher\n\n**Cough or barking cough**\nContinuous, more than usual, making a "
                         "whistling noise when breathing (not related to asthma, post-infectious "
                         "reactive airways, or other known causes or conditions you already "
@@ -59,6 +61,23 @@ async def on_message(message):
                         "you already have\n\n**Nausea, vomiting, and/or diarrhea**\nNot related to "
                         "irritable bowel syndrome, anxiety, menstrual cramps, or other known "
                         "causes or conditions you already have")
+
+                    msg = await client.wait_for("message", check=check)
+
+                    if msg.content.lower() == "y":
+                        await message.channel.send("**DO NOT ATTEND THIS EVENT**") # might recommend a hospital
+
+                    else:
+                        await message.channel.send("**In the last 10 days, have you tested positive on a rapid antigen "
+                                                   "test or home-based self-testing kit?**\nIf you have since tested negative on a lab-based PCR test, select No.")
+
+                        msg = await client.wait_for("message", check=check)
+
+                        if msg.content.lower() == "y":
+                            await message.channel.send("**DO NOT ATTEND THIS EVENT**")
+
+                        else:
+                            await message.channel.send("**YOU CAN ATTEND THIS EVENT**")
 
         # Level 2, N, YASER START HERE
         else:
