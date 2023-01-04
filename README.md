@@ -1,5 +1,4 @@
 # apollo-healthbot
-==================
 
 ### Introduction 
 Apollo the Healthbot aims to make it easier for those hosting events to perform screenings, providing Discord server owners with a bot that let's users perform screenings in the server itself.
